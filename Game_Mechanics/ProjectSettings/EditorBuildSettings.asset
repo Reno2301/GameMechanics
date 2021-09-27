@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Fighting_1.unity
+    guid: 9d0237ad7da655948b8357089fc74090
   m_configObjects: {}
