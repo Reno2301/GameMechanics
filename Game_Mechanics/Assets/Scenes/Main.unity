@@ -238,21 +238,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hey you! Who are you?
+  m_Text: '"Hey you! Who are you?"
 
 
-    Oh it''s you? You want to become the best
-    fighter in this country, right?
+    "Oh it''s you? You want to become the best
+    fighter in this country, right?"
 
 
-    Will you do your best on your journey?
+    "Will you do your best on your journey?"
 
 
-    Alright,
-    show me what you got!
+    "Alright,
+    show me what you got!"
 
 
-    "Press ''e'' to fight"'
+    Press ''space'' to fight.'
 --- !u!222 &66373539
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11469,7 +11469,7 @@ GameObject:
   - component: {fileID: 1459273784}
   - component: {fileID: 1459273787}
   - component: {fileID: 1459273786}
-  - component: {fileID: 1459273788}
+  - component: {fileID: 1459273785}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -11497,6 +11497,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1459273785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459273783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47d9506f19b712459d68723fff2c47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1459273786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11535,18 +11547,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459273783}
   m_CullTransparentMesh: 1
---- !u!114 &1459273788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459273783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47d9506f19b712459d68723fff2c47f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1947648201
 GameObject:
   m_ObjectHideFlags: 0

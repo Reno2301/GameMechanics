@@ -7,7 +7,7 @@ public class NextScene : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             LoadNextScene();
         }
