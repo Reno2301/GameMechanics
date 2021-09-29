@@ -9,14 +9,26 @@ public class PlayerCombat : MonoBehaviour
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    public LayerMask enemyLayer;
+    public LayerMask enemyLayers;
+
+    public int attackDamage = 40;
+
+    //how many times we can attack per second
+    public float attackRate = 1f;
+
+    //store the time when we can attack next
+    float nextAttackTime = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Time.time >= nextAttackTime)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
@@ -26,12 +38,12 @@ public class PlayerCombat : MonoBehaviour
         animator.SetTrigger("Attack");
 
         // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         // Apply damage
-        foreach(Collider2D Enemy in hitEnemies)
+        foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit an enemy");
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 
