@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Enemy : MonoBehaviour
     int currentHealth;
 
     public Animator animator;
+
+    public GameObject panel;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            NextScene();
             Die();
         }
     }
@@ -33,6 +37,13 @@ public class Enemy : MonoBehaviour
 
         GetComponent<Collider2D>().enabled = false;
 
+        panel.SetActive(true);
+
         this.enabled = false;
+    }
+
+    void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
