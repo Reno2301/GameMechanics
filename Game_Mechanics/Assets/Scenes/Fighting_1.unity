@@ -304,8 +304,8 @@ GameObject:
   - component: {fileID: 565461530}
   - component: {fileID: 565461531}
   - component: {fileID: 565461532}
-  - component: {fileID: 565461529}
   - component: {fileID: 565461533}
+  - component: {fileID: 565461529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -389,11 +389,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 565461526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 581608c0938226948b002d215b13d582, type: 3}
+  m_Script: {fileID: 11500000, guid: f1c09e9080f5edc4d9bf6d0194f0b4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  playerRB: {fileID: 565461530}
+  anim: {fileID: 565461532}
+  attackPoint: {fileID: 1840110311}
+  attackRange: 2
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &565461530
 Rigidbody2D:
   serializedVersion: 4
@@ -451,7 +455,7 @@ Animator:
   m_GameObject: {fileID: 565461526}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5e5a7a93a78d6f40babbc1cd157512a, type: 2}
+  m_Controller: {fileID: 9100000, guid: c5f31f1aabdab114fb0035762cb65cf9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -469,17 +473,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 565461526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2118f7f08e39de147a46953d95005e5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 581608c0938226948b002d215b13d582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 565461532}
-  attackPoint: {fileID: 1840110311}
-  attackRange: 0.2
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  attackDamage: 40
-  attackRate: 1
+  moveSpeed: 5
+  rb: {fileID: 565461530}
+  anim: {fileID: 565461532}
+  previousButton: 
+  currentButton: 
 --- !u!1 &575717669
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,8 +515,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -303.34354, y: 200.27002}
-  m_SizeDelta: {x: 193.3129, y: 50.12}
+  m_AnchoredPosition: {x: -250, y: 199.82}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575717671
 MonoBehaviour:
@@ -550,7 +551,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press 'e' to attack
+  m_Text: PRESS 'SPACE' TO ATTACK
 --- !u!222 &575717672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1579,7 +1580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840110310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61, y: 0.09, z: 0}
+  m_LocalPosition: {x: 1.86, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 565461528}
