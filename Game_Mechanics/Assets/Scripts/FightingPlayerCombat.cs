@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FightingPlayerCombat : MonoBehaviour
@@ -7,16 +5,24 @@ public class FightingPlayerCombat : MonoBehaviour
     public Animator anim;
 
     public Transform attackPoint;
-    public float attackRange = 2;
-
     public LayerMask enemyLayers;
+
+    public float attackRange = 2;
+    public int attackDamage = 20;
+
+    public float attackRate = 2;
+    float attackTime = 0;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Time.time >= attackTime)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Attack();
+                attackTime = Time.time + 1 / attackRate;
+            }
         }
     }
 
@@ -31,7 +37,7 @@ public class FightingPlayerCombat : MonoBehaviour
         //Damage the enemies that are in range
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("WOW!");
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 
