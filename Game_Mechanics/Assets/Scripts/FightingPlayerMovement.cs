@@ -12,8 +12,8 @@ public class FightingPlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    public string previousButton;
-    public string currentButton;
+    string previousButton;
+    string currentButton;
 
     public void Update()
     {
