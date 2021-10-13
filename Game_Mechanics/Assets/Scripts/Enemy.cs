@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        EnemyAttack();
+    }
+
     public void EnemyAttack()
     {
         if (/*player.transform.position.x - transform.position.x <= 1*/Input.GetKeyDown("e"))

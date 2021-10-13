@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-
+            anim.SetBool("isDead", true);
         }
     }
 }
