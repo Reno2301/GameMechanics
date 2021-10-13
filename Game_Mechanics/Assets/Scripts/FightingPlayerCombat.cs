@@ -13,6 +13,8 @@ public class FightingPlayerCombat : MonoBehaviour
     public float attackRate = 2;
     float attackTime = 0;
 
+    public GameObject enemy;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +25,7 @@ public class FightingPlayerCombat : MonoBehaviour
                 Attack();
                 attackTime = Time.time + 1 / attackRate;
             }
+
         }
     }
 
@@ -40,6 +43,7 @@ public class FightingPlayerCombat : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
+
 
     //with this function we can see the range of the attackpoint from the attackpoint.position as a circle.
     void OnDrawGizmosSelected()
