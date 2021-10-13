@@ -6,8 +6,12 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 60;
     public int currentHealth;
+    public int attackDamage = 15;
+
+    public Healthbar healthBar;
+
     public int speed = 1;
 
     public Animator animator;
@@ -19,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -30,15 +35,17 @@ public class Enemy : MonoBehaviour
     {
         if (/*player.transform.position.x - transform.position.x <= 1*/Input.GetKeyDown("e"))
         {
-            player.GetComponent<Health>().TakeDamage(10);
+            player.GetComponent<FightingPlayerCombat>().PlayerTakeDamage(attackDamage);
         }
     }
 
-    public void TakeDamage(int damage)
+    public void EnemyTakeDamage(int damage)
     {
         currentHealth -= damage;
 
-        transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+        healthBar.SetHealth(currentHealth);
+
+        //transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
         animator.SetTrigger("Hit");
 
