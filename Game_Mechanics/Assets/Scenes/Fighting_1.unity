@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 565461532}
   - component: {fileID: 565461533}
   - component: {fileID: 565461529}
+  - component: {fileID: 565461534}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -481,6 +482,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 565461530}
+  anim: {fileID: 565461532}
+--- !u!114 &565461534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565461526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7d7e15c58200a40b5a31e1df7c3768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 565461532}
 --- !u!1 &575717669
 GameObject:
@@ -1929,6 +1945,7 @@ MonoBehaviour:
   animator: {fileID: 2141361124}
   panel: {fileID: 35549330}
   player: {fileID: 565461526}
+  enemyRB: {fileID: 2141361125}
 --- !u!95 &2141361124
 Animator:
   serializedVersion: 3
