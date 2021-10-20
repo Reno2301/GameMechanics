@@ -64,5 +64,7 @@ public class Enemy : MonoBehaviour
         panel.SetActive(true);
 
         this.enabled = false;
+
+        player.GetComponent<FightingPlayerCombat>().maxHealth += 10;
     }
 }

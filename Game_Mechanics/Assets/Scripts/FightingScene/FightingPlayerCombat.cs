@@ -8,7 +8,7 @@ public class FightingPlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     float attackRange = 2;
-    public int attackDamage = 20;
+    public int attackDamage = 10;
     float attackRate = 2;
     float attackTime = 0;
 

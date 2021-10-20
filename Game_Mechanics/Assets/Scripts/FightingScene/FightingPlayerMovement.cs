@@ -5,7 +5,7 @@ using UnityEngine;
 public class FightingPlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed = 8;
+    public float moveSpeed = 10;
 
     public Rigidbody2D rb;
     public Animator anim;
@@ -46,6 +46,6 @@ public class FightingPlayerMovement : MonoBehaviour
     //FixedUpdate for the physics.
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * (moveSpeed/2) * Time.fixedDeltaTime);
     }
 }
