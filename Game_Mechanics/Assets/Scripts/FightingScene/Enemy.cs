@@ -66,5 +66,6 @@ public class Enemy : MonoBehaviour
         this.enabled = false;
 
         player.GetComponent<FightingPlayerCombat>().maxHealth += 10;
+        player.GetComponent<FightingPlayerMovement>().moveSpeed += 1;
     }
 }
