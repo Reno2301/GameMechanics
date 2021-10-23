@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     {
         if (/*player.transform.position.x - transform.position.x <= 1*/Input.GetKeyDown("e"))
         {
+            animator.SetTrigger("EnemyAttack");
             player.GetComponent<FightingPlayerCombat>().PlayerTakeDamage(attackDamage);
         }
     }
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
 
         //transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
-        animator.SetTrigger("Hit");
+        animator.SetTrigger("EnemyTakeDamage");
 
         if (currentHealth <= 0)
         {
@@ -57,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        animator.SetBool("IsDead", true);
+        animator.SetBool("EnemyIsDead", true);
 
         GetComponent<Collider2D>().enabled = false;
 
