@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3658374322159271771}
-    m_Position: {x: 480, y: -10, z: 0}
+    m_Position: {x: 530, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -588211621739083343}
     m_Position: {x: 20, y: 70, z: 0}
@@ -114,7 +114,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: EnemyIsFollowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3658374322159271771}
   m_Solo: 0
@@ -187,8 +190,8 @@ AnimatorController:
   m_Name: Fighting_Enemy
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: EnemySpeed
-    m_Type: 1
+  - m_Name: EnemyIsFollowing
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -231,7 +234,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: EnemyIsFollowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9103186452269358148}
   m_Solo: 0

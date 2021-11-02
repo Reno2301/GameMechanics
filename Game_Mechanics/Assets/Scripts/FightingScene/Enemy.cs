@@ -12,33 +12,51 @@ public class Enemy : MonoBehaviour
 
     public Healthbar healthBar;
 
-    public int speed = 1;
+    public int speed = 5;
 
     public Animator animator;
     public GameObject panel;
     public GameObject player;
     public Rigidbody2D enemyRB;
 
+    private Transform playerPos;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
+        EnemyChasePlayer();
         EnemyAttack();
+    }
+
+    public void EnemyChasePlayer()
+    {
+        if (transform.position.x - playerPos.position.x <= 10 || transform.position.x - playerPos.position.x >= -10)
+        {
+            transform.position = Vector2.MoveTowards(animator.transform.position, playerPos.position, speed * Time.deltaTime);
+            animator.SetBool("EnemyIsFollowing", false);
+        }
+        else
+        {
+            animator.SetBool("EnemyIsFollowing", false);
+        }
     }
 
     public void EnemyAttack()
     {
-        if (/*player.transform.position.x - transform.position.x <= 1*/Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("q"))
         {
             animator.SetTrigger("EnemyAttack");
             player.GetComponent<FightingPlayerCombat>().PlayerTakeDamage(attackDamage);
         }
     }
+
 
     public void EnemyTakeDamage(int damage)
     {

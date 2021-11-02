@@ -515,11 +515,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'A
+  m_Text: 'A / D
 
-    D
+    SPACE
 
-    SPACE'
+    E'
 --- !u!222 &296539451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUTTON LAYOUT
+  m_Text: CONTROLS
 --- !u!222 &403087077
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1007,7 +1007,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 25
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1143,7 +1143,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "   MOVE LEFT\n   MOVE RIGHT\n   ATTACK"
+  m_Text: "   MOVE LEFT\n   JUMP\n   ATTACK"
 --- !u!222 &575717672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609593410}
   m_Layer: 5
-  m_Name: ButtonLayout Full
+  m_Name: Controls Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2109,7 +2109,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUTTON LAYOUT
+  m_Text: CONTROLS
 --- !u!222 &1157891992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3769,7 +3769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1908765571}
   m_Layer: 5
-  m_Name: ButtonLayout (Button)
+  m_Name: Controls (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
