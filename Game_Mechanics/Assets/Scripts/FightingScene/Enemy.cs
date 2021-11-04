@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public Animator animator;
     public GameObject panel;
-    public GameObject player;
+    public PlayerScript player;
     public Rigidbody2D enemyRB;
 
     private Transform playerPos;
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         if (Input.GetKeyDown("q"))
         {
             animator.SetTrigger("EnemyAttack");
-            player.GetComponent<FightingPlayerCombat>().PlayerTakeDamage(attackDamage);
+            player.GetComponent<PlayerScript>().PlayerTakeDamage(attackDamage);
         }
     }
 
@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
 
         this.enabled = false;
 
-        player.GetComponent<FightingPlayerCombat>().maxHealth += 10;
-        player.GetComponent<FightingPlayerMovement>().moveSpeed += 1;
+        player.moveSpeed += 1;
+        player.maxHealth += 10;
     }
 }

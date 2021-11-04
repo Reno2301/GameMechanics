@@ -894,7 +894,6 @@ GameObject:
   - component: {fileID: 565461531}
   - component: {fileID: 565461532}
   - component: {fileID: 565461533}
-  - component: {fileID: 565461529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -969,29 +968,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &565461529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565461526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c09e9080f5edc4d9bf6d0194f0b4e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 565461532}
-  attackPoint: {fileID: 1840110311}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  attackDamage: 10
-  maxHealth: 100
-  currentHealth: 100
-  healthBar: {fileID: 1849144371}
-  playerDeadPanel: {fileID: 2078450685}
-  enemy: {fileID: 1849144368}
 --- !u!50 &565461530
 Rigidbody2D:
   serializedVersion: 4
@@ -1007,12 +983,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 25
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &565461531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1070,9 +1046,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581608c0938226948b002d215b13d582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   rb: {fileID: 565461530}
-  anim: {fileID: 565461532}
+  groundMask: 0
+  attackPoint: {fileID: 1840110311}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  attackDamage: 10
+  maxHealth: 100
+  currentHealth: 0
+  isAttackPressed: 0
+  isAttacking: 0
+  healthBar: {fileID: 1849144371}
+  playerDeadPanel: {fileID: 2078450685}
+  enemy: {fileID: 1833030979}
 --- !u!1 &575717669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,8 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346cfc6caba6594bbd6c118cf9b9ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCombat: {fileID: 565461529}
-  playerMove: {fileID: 565461533}
+  player: {fileID: 565461526}
   healthText: {fileID: 1206980718}
   strengthText: {fileID: 108144149}
   speedText: {fileID: 938603828}
@@ -3660,9 +3647,9 @@ GameObject:
   - component: {fileID: 1904764011}
   - component: {fileID: 1904764010}
   - component: {fileID: 1904764012}
-  m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Layer: 7
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3708,12 +3695,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300792, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
+  m_Sprite: {fileID: 21300616, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3751,7 +3738,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -4300,7 +4287,7 @@ MonoBehaviour:
   speed: 0
   animator: {fileID: 2141361124}
   panel: {fileID: 35549330}
-  player: {fileID: 565461526}
+  player: {fileID: 0}
   enemyRB: {fileID: 2141361125}
 --- !u!95 &2141361124
 Animator:
@@ -4341,4 +4328,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

@@ -5,17 +5,23 @@ using UnityEngine.UI;
 
 public class StatValues : MonoBehaviour
 {
-    public FightingPlayerCombat playerCombat;
-    public FightingPlayerMovement playerMove;
+    public GameObject player;
     public Text healthText;
     public Text strengthText;
     public Text speedText;
 
+    PlayerScript playerScript;
+
+    private void Start()
+    {
+        playerScript = player.GetComponent<PlayerScript>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        healthText.text = playerCombat.maxHealth.ToString();
-        strengthText.text = playerCombat.attackDamage.ToString();
-        speedText.text = playerMove.moveSpeed.ToString();
+        healthText.text = playerScript.maxHealth.ToString();
+        strengthText.text = playerScript.attackDamage.ToString();
+        speedText.text = playerScript.moveSpeed.ToString();
     }
 }
