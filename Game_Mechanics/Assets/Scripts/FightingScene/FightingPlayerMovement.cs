@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class FightingPlayerMovement : MonoBehaviour
 {
+    public float xAxis;
+    public float yAxis;
+    public float moveSpeed = 5;
+    public float jumpForce;
 
-    public float moveSpeed = 10;
-    public float jumpSpeed = 10;
+    public bool isJumpPressed;
+    public bool isGrounded;
 
     public Rigidbody2D rb;
     public Animator anim;
+    public LayerMask groundMask;
 
     Vector2 movement;
 
@@ -18,30 +23,15 @@ public class FightingPlayerMovement : MonoBehaviour
 
     public void Update()
     {
-        Move();
         LookingDirection();
+
+        xAxis = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("Jump");
+            isJumpPressed = true;
         }
-
-
-        //Mathf.Abs so it will always be positive, the animator needs a positive number.
-        anim.SetFloat("Speed", Mathf.Abs(movement.x));
     }
-
-    //FixedUpdate for the physics.
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + movement * (moveSpeed/2) * Time.fixedDeltaTime);
-    }
-
-    private void Move()
-    {
-        movement.x = Input.GetAxisRaw("Horizontal");
-    }
-
     private void LookingDirection()
     {
         //if the last button pressed is a (left) then the player will look to the left.
@@ -64,5 +54,47 @@ public class FightingPlayerMovement : MonoBehaviour
         }
 
         previousButton = currentButton;
+    }
+
+    private void FixedUpdate()
+    {
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, groundMask);
+
+        if(hit.collider != null)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        //==============================================
+
+        Vector2 vel = new Vector2(0, rb.velocity.y);
+
+        if(xAxis < 0)
+        {
+            vel.x = -moveSpeed;
+        } 
+        else if (xAxis > 0)
+        {
+            vel.x = moveSpeed;
+        } 
+        else
+        {
+            vel.x = 0;
+        }
+
+        //==============================================
+
+        if (isJumpPressed && isGrounded)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+            isJumpPressed = false;
+        }
+
+        rb.velocity = vel;
     }
 }

@@ -14,6 +14,7 @@ public class FightingPlayerCombat : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
+    public bool isAttackPressed;
 
     public Healthbar healthBar;
     public GameObject playerDeadPanel;
@@ -29,20 +30,24 @@ public class FightingPlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("e"))
+        {
+            isAttackPressed = true;
+        }
+
         if (Time.time >= attackTime)
         {
-            if (Input.GetKeyDown("e"))
+            if (isAttackPressed)
             {
                 Attack();
-                attackTime = Time.time + 1 / attackRate;
             }
         }
     }
 
     void Attack()
     {
-        //animate attack
-        anim.SetTrigger("Attack");
+        //Attack animation
+
 
         //check the enemies that are in range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -52,6 +57,10 @@ public class FightingPlayerCombat : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().EnemyTakeDamage(attackDamage);
         }
+
+        attackTime = Time.time + 1 / attackRate;
+
+        isAttackPressed = false;
     }
 
     public void PlayerTakeDamage(int damage)
@@ -60,7 +69,7 @@ public class FightingPlayerCombat : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
-        anim.SetTrigger("GetHit");
+        //anim.SetTrigger("GetHit");
 
         if (currentHealth <= 0)
         {
@@ -70,7 +79,7 @@ public class FightingPlayerCombat : MonoBehaviour
 
     void PlayerDies()
     {
-        anim.SetBool("IsDead", true);
+        //anim.SetBool("IsDead", true);
 
         GetComponent<Collider2D>().enabled = false;
 
