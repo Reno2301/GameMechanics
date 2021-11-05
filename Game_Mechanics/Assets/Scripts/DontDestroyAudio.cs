@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DontDestroyAudio : MonoBehaviour
 {
-
     private static DontDestroyAudio musicManagerInstance;
 
     private void Awake()
