@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,37 +15,38 @@ public class Enemy : MonoBehaviour
 
     public int speed = 5;
 
-    public Animator animator;
+    public Animator enemyAnimator;
     public GameObject panel;
-    public PlayerScript player;
+    public PlayerScript playerScript;
     public Rigidbody2D enemyRB;
 
-    private Transform playerPos;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     private void Update()
     {
-        EnemyChasePlayer();
+        EnemyChasingPlayer();
         EnemyAttack();
     }
 
-    public void EnemyChasePlayer()
+    public void EnemyChasingPlayer()
     {
-        if (transform.position.x - playerPos.position.x <= 10 || transform.position.x - playerPos.position.x >= -10)
+        if (transform.position.x - player.transform.position.x <= 10 || transform.position.x - player.transform.position.x >= -10)
         {
-            transform.position = Vector2.MoveTowards(animator.transform.position, playerPos.position, speed * Time.deltaTime);
-            animator.SetBool("EnemyIsFollowing", false);
+            transform.position = Vector2.MoveTowards(enemyAnimator.transform.position, player.transform.position, speed * Time.deltaTime);
+            //enemyAnimator.SetBool("EnemyIsFollowing", false);
         }
         else
         {
-            animator.SetBool("EnemyIsFollowing", false);
+            //enemyAnimator.SetBool("EnemyIsFollowing", false);
         }
     }
 
@@ -52,8 +54,8 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown("q"))
         {
-            animator.SetTrigger("EnemyAttack");
-            player.GetComponent<PlayerScript>().PlayerTakeDamage(attackDamage);
+            //enemyAnimator.SetTrigger("EnemyAttack");
+            playerScript.PlayerTakeDamage(attackDamage);
         }
     }
 
@@ -66,25 +68,24 @@ public class Enemy : MonoBehaviour
 
         //transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
-        animator.SetTrigger("EnemyTakeDamage");
+        //enemyAnimator.SetTrigger("EnemyTakeDamage");
 
         if (currentHealth <= 0)
         {
-            Die();
+            EnemyDies();
         }
     }
 
-    void Die()
+    void EnemyDies()
     {
-        animator.SetBool("EnemyIsDead", true);
+        //enemyAnimator.SetBool("EnemyIsDead", true);
 
         GetComponent<Collider2D>().enabled = false;
+
+        enemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
 
         panel.SetActive(true);
 
         this.enabled = false;
-
-        player.moveSpeed += 1;
-        player.maxHealth += 10;
     }
 }

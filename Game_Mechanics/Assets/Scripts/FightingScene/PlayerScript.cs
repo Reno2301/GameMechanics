@@ -19,15 +19,16 @@ public class PlayerScript : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayers;
 
-    private float attackRange = 2;
     public int attackDamage = 10;
-    private float attackRate = 2;
-    private float attackTime = 0;
+    private float attackRange = 2;
+    private float attackDelay = 0.15f;
+    private float attackRealHit = 0.15f;
+    public bool isAttackPressed;
+    public bool isAttacking;
+    public bool isJumping;
 
     public int maxHealth;
     public int currentHealth;
-    public bool isAttackPressed;
-    public bool isAttacking;
 
     public Healthbar healthBar;
     public GameObject playerDeadPanel;
@@ -41,11 +42,11 @@ public class PlayerScript : MonoBehaviour
 
     //Animation states
     const string PLAYER_IDLE = "PlayerIdle",
-                     PLAYER_RUN = "PlayerRun",
-                     PLAYER_JUMP = "PlayerJump",
-                     PLAYER_ATTACK = "PlayerAttack",
-                     PLAYER_TAKE_HIT = "PlayerTakeHit",
-                     PLAYER_DEATH = "PlayerDeath";
+                 PLAYER_RUN = "PlayerRun",
+                 PLAYER_JUMP = "PlayerJump",
+                 PLAYER_ATTACK = "PlayerAttack",
+                 PLAYER_TAKE_HIT = "PlayerTakeHit",
+                 PLAYER_DEATH = "PlayerDeath";
 
     void Start()
     {
@@ -67,15 +68,46 @@ public class PlayerScript : MonoBehaviour
             isJumpPressed = true;
         }
 
-        Debug.Log(currentState);
+        if (Input.GetKeyDown("e"))
+        {
+            isAttackPressed = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            isJumpPressed = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        //is the player hitting the ground
+        //checking if the player can jump
+        if (isJumpPressed && isGrounded)
+        {
+            isJumpPressed = false;
+            if (!isJumping)
+            {
+                isJumping = true;
 
+                Invoke("JumpComplete", attackDelay);
 
-        //==============================================
+                rb.AddForce(new Vector2(0, jumpForce));
+
+                ChangeAnimationState(PLAYER_JUMP);
+            }
+        }
 
         Vector2 vel = new Vector2(0, rb.velocity.y);
 
@@ -94,26 +126,19 @@ public class PlayerScript : MonoBehaviour
             vel.x = 0;
         }
 
-        if (isGrounded)
+        if (isGrounded && !isAttacking && !isJumping)
         {
             if (xAxis != 0)
             {
                 ChangeAnimationState(PLAYER_RUN);
             }
-            else
+            else if(xAxis == 0)
             {
                 ChangeAnimationState(PLAYER_IDLE);
             }
         }
 
         //==============================================
-
-        if (isJumpPressed && isGrounded)
-        {
-            rb.AddForce(new Vector2(0, jumpForce));
-            isJumpPressed = false;
-            ChangeAnimationState(PLAYER_JUMP);
-        }
 
         rb.velocity = vel;
 
@@ -126,21 +151,11 @@ public class PlayerScript : MonoBehaviour
             {
                 isAttacking = true;
 
-                Attack();
+                ChangeAnimationState(PLAYER_ATTACK);
+
+                Invoke("Attack", attackRealHit);
             }
         }
-    }
-
-    void ChangeAnimationState(string newState)
-    {
-        //don't interrupt the same animation
-        if (currentState == newState) return;
-
-        //play the new animation
-        animator.Play(newState);
-
-        //reassign the current state
-        currentState = newState;
     }
 
     void Attack()
@@ -154,9 +169,29 @@ public class PlayerScript : MonoBehaviour
             enemy.GetComponent<Enemy>().EnemyTakeDamage(attackDamage);
         }
 
-        attackTime = Time.time + 1 / attackRate;
+        Invoke("AttackComplete", attackDelay);
+    }
 
-        isAttackPressed = false;
+    void AttackComplete()
+    {
+        isAttacking = false;
+    }
+
+    void JumpComplete()
+    {
+        isJumping = false;
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        //don't interrupt the same animation
+        if (currentState == newState) return;
+
+        //play the new animation
+        animator.Play(newState);
+
+        //reassign the current state
+        currentState = newState;
     }
 
     public void PlayerTakeDamage(int damage)
