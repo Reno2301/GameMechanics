@@ -35,10 +35,6 @@ public class Enemy : MonoBehaviour
     public bool isEnemyAttackPressed;
     public bool isEnemyAttacking;
 
-
-    int randomEnemyAttack = 1;
-    int randomEnemyMove = 2;
-
     private string currentState;
 
     //Animation states
@@ -123,7 +119,6 @@ public class Enemy : MonoBehaviour
         {
             if (transform.position.x - player.transform.position.x <= 10 || transform.position.x - player.transform.position.x >= -10)
             {
-                transform.position = Vector2.MoveTowards(enemyAnimator.transform.position, player.transform.position, speed * Time.deltaTime);
                 ChangeAnimationState(ENEMY_RUN);
             }
             else
@@ -139,7 +134,7 @@ public class Enemy : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
-        transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+        //transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
         ChangeAnimationState(ENEMY_TAKE_HIT);
 
