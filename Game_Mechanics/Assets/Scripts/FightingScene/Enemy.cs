@@ -148,4 +148,12 @@ public class Enemy : MonoBehaviour
 
         this.enabled = false;
     }
+
+    void OnDrawGizmosSelected()
+    {
+        if (enemyAttackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(enemyAttackPoint.position, enemyAttackRange);
+    }
 }

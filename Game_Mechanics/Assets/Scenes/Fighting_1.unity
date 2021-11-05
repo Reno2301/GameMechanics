@@ -1623,21 +1623,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581608c0938226948b002d215b13d582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   rb: {fileID: 565461530}
   attackPoint: {fileID: 1840110311}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  healthBar: {fileID: 1849144371}
+  playerDeadPanel: {fileID: 2078450685}
+  enemy: {fileID: 1833030979}
+  moveSpeed: 5
   attackDamage: 10
   isAttackPressed: 0
   isAttacking: 0
   isJumping: 0
   maxHealth: 100
   currentHealth: 0
-  healthBar: {fileID: 1849144371}
-  playerDeadPanel: {fileID: 2078450685}
-  enemy: {fileID: 1833030979}
 --- !u!1 &575717669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4330,7 +4330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710643318}
   m_Layer: 0
-  m_Name: AttackPoint
+  m_Name: EnemyAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5837,7 +5837,7 @@ MonoBehaviour:
   playerScript: {fileID: 565461533}
   enemyRB: {fileID: 2141361125}
   player: {fileID: 565461526}
-  enemyAttackPoint: {fileID: 1840110311}
+  enemyAttackPoint: {fileID: 1710643318}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
