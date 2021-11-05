@@ -34,6 +34,8 @@ public class PlayerScript : MonoBehaviour
     public bool isAttacking;
     public bool isJumping;
 
+    public int deathTimer;
+
     public int maxHealth;
     public int currentHealth;
 
@@ -47,7 +49,8 @@ public class PlayerScript : MonoBehaviour
                  PLAYER_JUMP = "PlayerJump",
                  PLAYER_ATTACK = "PlayerAttack",
                  PLAYER_TAKE_HIT = "PlayerTakeHit",
-                 PLAYER_DEATH = "PlayerDeath";
+                 PLAYER_DEATH = "PlayerDeath",
+                 PLAYER_DEATH_2 = "PlayerDeath2";
 
     void Start()
     {
@@ -212,7 +215,7 @@ public class PlayerScript : MonoBehaviour
     }
     void PlayerDies()
     {
-        ChangeAnimationState(PLAYER_DEATH);
+        ChangeAnimationState(PLAYER_DEATH_2);
 
         GetComponent<Collider2D>().enabled = false;
 

@@ -1632,10 +1632,13 @@ MonoBehaviour:
   playerDeadPanel: {fileID: 2078450685}
   enemy: {fileID: 1833030979}
   moveSpeed: 5
+  playerCanAttack: 0
+  playerCanAttackTimer: 400
   attackDamage: 10
   isAttackPressed: 0
   isAttacking: 0
   isJumping: 0
+  deathTimer: 0
   maxHealth: 100
   currentHealth: 0
 --- !u!1 &575717669
@@ -4145,7 +4148,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 35549335}
         m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
-        m_MethodName: AddHealth
+        m_MethodName: AddStrength
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4155,7 +4158,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 553982993}
+      - m_Target: {fileID: 1157186843}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4167,7 +4170,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 319052670}
+      - m_Target: {fileID: 1532154649}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4720,7 +4723,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 35549335}
         m_TargetAssemblyTypeName: Upgrade, Assembly-CSharp
-        m_MethodName: AddSpeed
+        m_MethodName: AddStrength
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4730,7 +4733,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8725304}
+      - m_Target: {fileID: 1157186843}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4742,7 +4745,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1174650928}
+      - m_Target: {fileID: 1532154649}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -5842,6 +5845,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attackDamage: 10
+  enemyCanAttack: 0
+  enemyCanAttackTimer: 400
   isEnemyAttackPressed: 0
   isEnemyAttacking: 0
 --- !u!95 &2141361124
@@ -5878,9 +5883,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4

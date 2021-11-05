@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
                  ENEMY_RUN = "EnemyRun",
                  ENEMY_ATTACK = "EnemyAttack",
                  ENEMY_TAKE_HIT = "EnemyTakeHit",
-                 ENEMY_DEATH = "EnemyDeath";
+                 ENEMY_DEATH = "EnemyDeath",
+                 ENEMY_DEATH_2 = "EnemyDeath2";
 
     // Start is called before the first frame update
     void Start()
@@ -150,7 +151,7 @@ public class Enemy : MonoBehaviour
 
     void EnemyDies()
     {
-        ChangeAnimationState(ENEMY_DEATH);
+        ChangeAnimationState(ENEMY_DEATH_2);
 
         GetComponent<Collider2D>().enabled = false;
 
