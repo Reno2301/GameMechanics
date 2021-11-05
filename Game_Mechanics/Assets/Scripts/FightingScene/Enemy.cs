@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 60;
     public int currentHealth;
-    public int attackDamage = 15;
+
 
     public Healthbar healthBar;
 
@@ -21,6 +21,26 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D enemyRB;
 
     public GameObject player;
+
+    public Transform enemyAttackPoint;
+    public LayerMask playerLayer;
+
+    public int attackDamage = 15;
+    private float enemyAttackRange = 2;
+    private float enemyAttackDelay = 0.15f;
+    private float enemyAttackRealHit = 0.15f;
+
+    public bool isEnemyAttackPressed;
+    public bool isEnemyAttacking;
+
+    private string currentState;
+
+    //Animation states
+    const string ENEMY_IDLE = "EnemyIdle",
+                 ENEMY_RUN = "EnemyRun",
+                 ENEMY_ATTACK = "EnemyAttack",
+                 ENEMY_TAKE_HIT = "EnemyTakeHit",
+                 ENEMY_DEATH = "EnemyDeath";
 
     // Start is called before the first frame update
     void Start()
@@ -34,31 +54,71 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         EnemyChasingPlayer();
-        EnemyAttack();
+
+        if (Input.GetKeyDown("q"))
+        {
+            isEnemyAttackPressed = true;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (isEnemyAttackPressed)
+        {
+            isEnemyAttackPressed = false;
+
+            if (!isEnemyAttacking)
+            {
+                isEnemyAttacking = true;
+
+                ChangeAnimationState(ENEMY_ATTACK);
+
+                Invoke("EnemyAttack", enemyAttackRealHit);
+            }
+        }
+    }
+
+    void EnemyAttack()
+    {
+        Collider2D[] players = Physics2D.OverlapCircleAll(enemyAttackPoint.position, enemyAttackRange, playerLayer);
+
+        foreach (Collider2D player in players)
+        {
+            player.GetComponent<PlayerScript>().PlayerTakeDamage(attackDamage);
+        }
+
+        Invoke("EnemyAttackComplete", enemyAttackDelay);
+    }
+
+    void EnemyAttackComplete()
+    {
+        isEnemyAttacking = false;
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+
+        enemyAnimator.Play(newState);
+
+        currentState = newState;
     }
 
     public void EnemyChasingPlayer()
     {
-        if (transform.position.x - player.transform.position.x <= 10 || transform.position.x - player.transform.position.x >= -10)
+        if (!isEnemyAttacking)
         {
-            transform.position = Vector2.MoveTowards(enemyAnimator.transform.position, player.transform.position, speed * Time.deltaTime);
-            //enemyAnimator.SetBool("EnemyIsFollowing", false);
-        }
-        else
-        {
-            //enemyAnimator.SetBool("EnemyIsFollowing", false);
-        }
-    }
-
-    public void EnemyAttack()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            //enemyAnimator.SetTrigger("EnemyAttack");
-            playerScript.PlayerTakeDamage(attackDamage);
+            if (transform.position.x - player.transform.position.x <= 10 || transform.position.x - player.transform.position.x >= -10)
+            {
+                transform.position = Vector2.MoveTowards(enemyAnimator.transform.position, player.transform.position, speed * Time.deltaTime);
+                ChangeAnimationState(ENEMY_RUN);
+            }
+            else
+            {
+                ChangeAnimationState(ENEMY_IDLE);
+            }
         }
     }
-
 
     public void EnemyTakeDamage(int damage)
     {
@@ -66,9 +126,9 @@ public class Enemy : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
-        //transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+        transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
-        //enemyAnimator.SetTrigger("EnemyTakeDamage");
+        ChangeAnimationState(ENEMY_TAKE_HIT);
 
         if (currentHealth <= 0)
         {
@@ -78,7 +138,7 @@ public class Enemy : MonoBehaviour
 
     void EnemyDies()
     {
-        //enemyAnimator.SetBool("EnemyIsDead", true);
+        ChangeAnimationState(ENEMY_DEATH);
 
         GetComponent<Collider2D>().enabled = false;
 

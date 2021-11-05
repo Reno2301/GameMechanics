@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fighting_1.unity
     guid: 9d0237ad7da655948b8357089fc74090
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/City_1.unity
     guid: e5baf4671f1bf804b9ff87b37024303e
   - enabled: 1

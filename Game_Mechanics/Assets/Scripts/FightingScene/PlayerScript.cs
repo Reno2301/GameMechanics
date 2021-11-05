@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public Rigidbody2D rb;
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
+
+    public Healthbar healthBar;
+    public GameObject playerDeadPanel;
+    public GameObject enemy;
+
+    Animator animator;
+
+    //=============================
+
     private float xAxis;
     private float yAxis;
-    public float moveSpeed = 7;
+    public float moveSpeed = 5;
     private float jumpForce = 750;
 
     private bool isJumpPressed;
     private bool isGrounded;
-
-    public Rigidbody2D rb;
-
-    //=============================
-
-    public Transform attackPoint;
-    public LayerMask enemyLayers;
 
     public int attackDamage = 10;
     private float attackRange = 2;
@@ -30,13 +35,7 @@ public class PlayerScript : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
-    public Healthbar healthBar;
-    public GameObject playerDeadPanel;
-    public GameObject enemy;
-
     //=============================
-
-    Animator animator;
 
     private string currentState;
 
@@ -142,7 +141,6 @@ public class PlayerScript : MonoBehaviour
 
         rb.velocity = vel;
 
-
         if (isAttackPressed)
         {
             isAttackPressed = false;
@@ -200,7 +198,7 @@ public class PlayerScript : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
-        //anim.SetTrigger("GetHit");
+        ChangeAnimationState(PLAYER_TAKE_HIT);
 
         if (currentHealth <= 0)
         {
@@ -209,7 +207,7 @@ public class PlayerScript : MonoBehaviour
     }
     void PlayerDies()
     {
-        //anim.SetBool("IsDead", true);
+        ChangeAnimationState(PLAYER_DEATH);
 
         GetComponent<Collider2D>().enabled = false;
 
