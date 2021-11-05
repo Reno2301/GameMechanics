@@ -24,8 +24,10 @@ public class PlayerScript : MonoBehaviour
     private bool isJumpPressed;
     private bool isGrounded;
 
+    public int playerCanAttack;
+    public int playerCanAttackTimer = 400;
     public int attackDamage = 10;
-    private float attackRange = 2;
+    private float attackRange = 1.8f;
     private float attackDelay = 0.15f;
     private float attackRealHit = 0.15f;
     public bool isAttackPressed;
@@ -60,6 +62,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Update()
     {
+        playerCanAttack--;
+
         xAxis = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -67,9 +71,10 @@ public class PlayerScript : MonoBehaviour
             isJumpPressed = true;
         }
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && playerCanAttack < 0)
         {
             isAttackPressed = true;
+            playerCanAttack = playerCanAttackTimer;
         }
     }
 
@@ -210,6 +215,8 @@ public class PlayerScript : MonoBehaviour
         ChangeAnimationState(PLAYER_DEATH);
 
         GetComponent<Collider2D>().enabled = false;
+
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         playerDeadPanel.SetActive(true);
 

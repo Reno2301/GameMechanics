@@ -26,12 +26,18 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
 
     public int attackDamage = 15;
-    private float enemyAttackRange = 2;
+    public int enemyCanAttack;
+    public int enemyCanAttackTimer = 400;
+    private float enemyAttackRange = 1.8f;
     private float enemyAttackDelay = 0.15f;
     private float enemyAttackRealHit = 0.15f;
 
     public bool isEnemyAttackPressed;
     public bool isEnemyAttacking;
+
+
+    int randomEnemyAttack = 1;
+    int randomEnemyMove = 2;
 
     private string currentState;
 
@@ -53,12 +59,18 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        enemyCanAttack--;
+
         EnemyChasingPlayer();
 
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q") && enemyCanAttack <= 0)
         {
             isEnemyAttackPressed = true;
+            enemyCanAttack = enemyCanAttackTimer;
         }
+
+        if(playerScript.currentHealth <= 0)
+            enemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void FixedUpdate()
@@ -143,6 +155,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
 
         enemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        playerScript.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         panel.SetActive(true);
 
