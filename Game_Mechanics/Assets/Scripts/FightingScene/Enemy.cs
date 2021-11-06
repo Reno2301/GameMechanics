@@ -52,16 +52,19 @@ public class Enemy : MonoBehaviour
     {
         enemyCanAttack--;
 
-        EnemyChasingPlayer();
-
         if (Input.GetKeyDown("q") && enemyCanAttack <= 0)
         {
             isEnemyAttackPressed = true;
             enemyCanAttack = enemyCanAttackTimer;
         }
 
-        if(playerScript.currentHealth <= 0)
+        if (playerScript.currentHealth <= 0)
             enemyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        if (!isEnemyAttacking)
+        {
+            ChangeAnimationState(ENEMY_IDLE);
+        }
     }
 
     public void FixedUpdate()
@@ -105,21 +108,6 @@ public class Enemy : MonoBehaviour
         enemyAnimator.Play(newState);
 
         currentState = newState;
-    }
-
-    public void EnemyChasingPlayer()
-    {
-        if (!isEnemyAttacking)
-        {
-            if (transform.position.x - player.transform.position.x <= 10 || transform.position.x - player.transform.position.x >= -10)
-            {
-                ChangeAnimationState(ENEMY_RUN);
-            }
-            else
-            {
-                ChangeAnimationState(ENEMY_IDLE);
-            }
-        }
     }
 
     public void EnemyTakeDamage(int damage)
