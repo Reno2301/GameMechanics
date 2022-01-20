@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - TileMapCollision
+  - IslandOne
+  - IslandTwo
+  - IslandThree
+  - IslandFour
+  - MiddleIsland
   layers:
   - Default
   - TransparentFX
