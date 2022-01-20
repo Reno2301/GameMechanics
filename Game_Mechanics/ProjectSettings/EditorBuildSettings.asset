@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MiddleIsland.unity
     guid: 30cb9a0447c615c4199a236ef9ca33d8
   - enabled: 1
-    path: Assets/Scenes/IslandOne.unity
+    path: Assets/Scenes/IslandLeft.unity
     guid: c184ac26385131240889075e9ce3925e
+  - enabled: 1
+    path: Assets/Scenes/IslandRight.unity
+    guid: 2379a9e8263458e4e873a72e30c15233
   m_configObjects: {}
