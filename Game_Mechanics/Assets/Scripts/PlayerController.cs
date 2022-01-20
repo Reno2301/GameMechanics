@@ -4,52 +4,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] LayerMask tileMapCollisions;
+    public float moveSpeed = 5f;
+    public Transform movePoint;
 
-    private bool isMoving;
-    private Vector2 input;
+    public LayerMask tileCollision;
+
+    private void Start()
+    {
+        movePoint.parent = null;
+    }
 
     private void Update()
     {
-        if (!isMoving)
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            // remove diagonal movement
-            if (input.x != 0) input.y = 0;
-
-            if (input != Vector2.zero)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if (IsWalkable(targetPos))
-                    StartCoroutine(Move(targetPos));
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, tileCollision))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                }
+            } if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            {
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, tileCollision))
+                {
+                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                }
             }
         }
-    }
-
-    IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
-
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-
-        isMoving = false;
-    }
-
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        if (Physics2D.OverlapCircle(targetPos, .5f, tileMapCollisions) != null)
-        { return false; }
-        return true;
     }
 }
