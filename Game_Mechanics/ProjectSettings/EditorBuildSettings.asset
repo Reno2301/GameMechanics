@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/OldScenes/OldStartMenu.unity
+    path: Assets/Old/OldScenes/OldStartMenu.unity
     guid: 82bcb7f86dfbef642b65967541335be0
   - enabled: 0
-    path: Assets/OldScenes/OldMain.unity
+    path: Assets/Old/OldScenes/OldMain.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/OldScenes/OldFighting_1.unity
+    path: Assets/Old/OldScenes/OldFighting_1.unity
     guid: 9d0237ad7da655948b8357089fc74090
   - enabled: 0
-    path: Assets/OldScenes/OldCity_1.unity
+    path: Assets/Old/OldScenes/OldCity_1.unity
     guid: e5baf4671f1bf804b9ff87b37024303e
   - enabled: 0
-    path: Assets/OldScenes/OldToBeContinued.unity
+    path: Assets/Old/OldScenes/OldToBeContinued.unity
     guid: 47e393b8c97d8d546bbbca2305cff7f4
   - enabled: 1
     path: Assets/Scenes/Forest1.unity
