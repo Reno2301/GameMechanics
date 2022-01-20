@@ -23977,6 +23977,66 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1467513985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467513988}
+  - component: {fileID: 1467513987}
+  - component: {fileID: 1467513986}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1467513986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467513985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f53c85c265e7f4cabb58898962cf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1845969001}
+  movePoint: {fileID: 1567161195}
+  position: {x: -16.5, y: 0.8, z: 0}
+  previous: MiddleIsland
+--- !u!114 &1467513987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467513985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9c15046d8c2d04ca66bd41b1b63310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1467513988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467513985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567161194
 GameObject:
   m_ObjectHideFlags: 0
@@ -24000,11 +24060,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567161194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1845969001}
+  m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1785650160
@@ -24147,7 +24207,6 @@ MonoBehaviour:
   tileCollision:
     serializedVersion: 2
     m_Bits: 128
-  animator: {fileID: 1845968996}
 --- !u!61 &1845968998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24255,13 +24314,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845968995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.8, z: 0}
+  m_LocalPosition: {x: -16.5, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1785650161}
-  - {fileID: 1567161195}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1935847051
 GameObject:
@@ -24319,13 +24377,17 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: MiddleIsland
       objectReference: {fileID: 0}
+    - target: {fileID: 2953828406776529741, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
+      propertyPath: sceneName
+      value: MiddleIsland
+      objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654689, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_Name
       value: SceneTransition
       objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654691, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654691, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_LocalPosition.x

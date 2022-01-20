@@ -13,8 +13,11 @@ EditorBuildSettings:
     guid: c184ac26385131240889075e9ce3925e
   - enabled: 1
     path: Assets/Scenes/IslandUp.unity
-    guid: 081edfc14255a2840b341ea0a7167570
+    guid: c1dff5896d4b34344b9463b58f4629e8
   - enabled: 1
     path: Assets/Scenes/IslandRight.unity
     guid: 2379a9e8263458e4e873a72e30c15233
+  - enabled: 1
+    path: Assets/Scenes/IslandDown.unity
+    guid: 081edfc14255a2840b341ea0a7167570
   m_configObjects: {}

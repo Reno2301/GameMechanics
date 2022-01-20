@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator animator;
+    
     public float moveSpeed = 5f;
     public Transform movePoint;
 
     public LayerMask tileCollision;
 
-    public Animator animator;
-
     private void Start()
     {
-        movePoint.parent = null;
+        animator = GetComponent<Animator>();
+
+        movePoint.position = transform.position;
     }
 
     private void Update()

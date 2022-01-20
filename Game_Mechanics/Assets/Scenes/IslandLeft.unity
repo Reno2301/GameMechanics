@@ -24095,11 +24095,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276486967}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1324085039}
+  m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324085033
@@ -24159,7 +24159,6 @@ MonoBehaviour:
   tileCollision:
     serializedVersion: 2
     m_Bits: 128
-  animator: {fileID: 1324085034}
 --- !u!61 &1324085036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24271,10 +24270,69 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1254509903}
-  - {fileID: 1276486968}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1671919353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671919355}
+  - component: {fileID: 1671919354}
+  - component: {fileID: 1671919356}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1671919354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671919353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9c15046d8c2d04ca66bd41b1b63310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1671919355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671919353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1671919356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671919353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f53c85c265e7f4cabb58898962cf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1324085039}
+  movePoint: {fileID: 1276486968}
+  position: {x: 17.5, y: 0.8, z: 0}
+  previous: MiddleIsland
 --- !u!1001 &1743797298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24286,17 +24344,25 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: MiddleIsland
       objectReference: {fileID: 0}
+    - target: {fileID: 586918863695688638, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
+      propertyPath: playerStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: 916f68d9eed9dc942bde7144e21274c6, type: 2}
+    - target: {fileID: 2953828406776529741, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
+      propertyPath: sceneName
+      value: MiddleIsland
+      objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654689, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_Name
       value: SceneTransition
       objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654691, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654691, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.75
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7011766811740654691, guid: 8ed3f8dd07e126c4da86d55189e34864, type: 3}
       propertyPath: m_LocalPosition.y
