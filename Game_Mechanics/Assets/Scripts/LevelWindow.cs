@@ -22,15 +22,21 @@ public class LevelWindow : MonoBehaviour
     {
         expBarSlider.value = experienceNormalized;
         expText.text = "EXPERIENCE :  " + (expBarSlider.value * levelSystem.experienceToNextLevel) + " / " + levelSystem.experienceToNextLevel;
+
+        if(levelSystem.level >= 9)
+        {
+            expBarSlider.value = 1;
+            expText.text = "EXPERIENCE : MAX";
+        }
     }
 
     private void SetLevelNumber(int levelNumber)
     {
         levelText.text = "LEVEL :  " + (levelNumber + 1);
-        if(levelNumber >= 9)
+        if(levelSystem.level >= 9)
         {
             levelNumber = 9;
-            expBarSlider.value = 1;
+            levelText.text = "LEVEL: MAX";
         }
     }
 
