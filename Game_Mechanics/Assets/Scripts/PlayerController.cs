@@ -1,14 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator animator;
-    
-    public float moveSpeed = 5f;
-    public Transform movePoint;
+    //Leveling
+    private LevelSystem levelSystem;
+    private float maxLevel = 10;
 
+    //Animation
+    [SerializeField] Animator levelUpAnimator;
+    private Animator animator;
+
+    //Movement
+    public float moveSpeed = 5f;
+
+    //Collision
+    public Transform movePoint;
     public LayerMask tileCollision;
 
     private void Start()
@@ -18,8 +28,46 @@ public class PlayerController : MonoBehaviour
         movePoint.position = transform.position;
     }
 
+    //set levelSystem
+    public void SetLevelSystem(LevelSystem levelSystem)
+    {
+        this.levelSystem = levelSystem;
+
+        levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
+    }
+
+    private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
+    {
+        for (int i = 0; i < maxLevel; i++)
+        {
+            if (levelSystem.level == i)
+            {
+                Debug.Log(i);
+
+                //attack1Damage = 10 + i*2
+                //attack2Damage = attack1Damage * 2
+
+                //stamina = 100 + i*20
+                //health = 100 + i*20
+            }
+        }
+    }
+
     private void Update()
     {
+        Movement();
+        Animation();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            levelSystem.AddExperience(40);
+        }
+    }
+
+    //Player movement
+    public void Movement()
+    {
+        //Player move towards movePoint
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
@@ -39,7 +87,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
 
+    //Player animation
+    public void Animation()
+    {
         if (Input.GetKey(KeyCode.D))
             animator.Play("Main_Player_Walk_Right");
         else if (Input.GetKey(KeyCode.A))
