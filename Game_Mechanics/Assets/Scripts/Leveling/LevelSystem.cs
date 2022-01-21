@@ -9,13 +9,13 @@ public class LevelSystem : MonoBehaviour
     public event EventHandler OnLevelChanged;
 
     public int level;
-    private int experience;
+    private float experience;
     public int experienceToNextLevel;
 
     public LevelSystem()
     {
-        level = 0;
-        experience = 0;
+        level = PlayerPrefs.GetInt("CurrentLevel");
+        experience = PlayerPrefs.GetFloat("CurrentExp");
         experienceToNextLevel = 100;
     }
 

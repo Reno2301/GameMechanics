@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+
     //Leveling
     private LevelSystem levelSystem;
     private float maxLevel = 10;
 
     //Animation
-    [SerializeField] Animator levelUpAnimator;
     private Animator animator;
 
     //Movement
@@ -21,11 +22,47 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
     public LayerMask tileCollision;
 
+    //Stats
+    public int attack1Damage;
+    public int attack2Damage;
+    public int stamina;
+    public int health;
+
+    LevelWindow levelWindow;
+    PlayerController player;
+
+    private void Awake()
+    {
+        levelWindow = GameObject.Find("LevelWindow").GetComponent<LevelWindow>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
     private void Start()
     {
+        LevelSystem levelSystem = new LevelSystem();
+        levelWindow.SetLevelSystem(levelSystem);
+        player.SetLevelSystem(levelSystem);
+
         animator = GetComponent<Animator>();
 
         movePoint.position = transform.position;
+
+        attack1Damage = 10;
+        attack2Damage = attack1Damage * 2;
+        stamina = 100;
+        health = 100;
+
+        for (int i = 0; i < maxLevel; i++)
+        {
+            if (PlayerPrefs.GetInt("CurrentLevel") == i)
+            {
+                Debug.Log("Level: " + (PlayerPrefs.GetInt("CurrentLevel")+1));
+                Debug.Log("Attack 1: " + attack1Damage);
+                Debug.Log("Attack 2: " + attack2Damage);
+                Debug.Log("Stamina: " + stamina);
+                Debug.Log("Health: " + health);
+            }
+        }
     }
 
     //set levelSystem
@@ -42,15 +79,18 @@ public class PlayerController : MonoBehaviour
         {
             if (levelSystem.level == i)
             {
-                Debug.Log(i);
+                attack1Damage = 5 + i;
+                attack2Damage = attack1Damage * 2;
 
-                //attack1Damage = 10 + i*2
-                //attack2Damage = attack1Damage * 2
-
-                //stamina = 100 + i*20
-                //health = 100 + i*20
+                stamina = 100 + i * 15;
+                health = 100 + i * 15;
             }
         }
+        Debug.Log("Level: " + (levelSystem.level + 1));
+        Debug.Log("Attack 1: " + attack1Damage);
+        Debug.Log("Attack 2: " + attack2Damage);
+        Debug.Log("Stamina: " + stamina);
+        Debug.Log("Health: " + health);
     }
 
     private void Update()

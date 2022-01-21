@@ -28,6 +28,7 @@ public class LevelWindow : MonoBehaviour
             expBarSlider.value = 1;
             expText.text = "EXPERIENCE : MAX";
         }
+        PlayerPrefs.SetFloat("CurrentExp", expBarSlider.value * levelSystem.experienceToNextLevel);
     }
 
     private void SetLevelNumber(int levelNumber)
@@ -38,6 +39,7 @@ public class LevelWindow : MonoBehaviour
             levelNumber = 9;
             levelText.text = "LEVEL: MAX";
         }
+        PlayerPrefs.SetInt("CurrentLevel", levelNumber);
     }
 
     public void SetLevelSystem(LevelSystem levelSystem)
