@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9215333185848895549}
   - component: {fileID: -7539259759577797472}
+  - component: {fileID: 6468858015604488652}
   m_Layer: 5
   m_Name: PlayerFighting
   m_TagString: Player
@@ -52,12 +53,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: You
   unitLevel: 0
-  attack1: 0
-  attack2: 0
+  attack1Damage: 0
+  attack2Damage: 0
+  attack1Stamina: 0
+  attack2Stamina: 0
   currentStamina: 0
   maxStamina: 0
+  staminaAdd: 0
   maxHP: 0
   currentHP: 0
+--- !u!114 &6468858015604488652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215333185848895490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6bef62a743bbe40bd66f2f00ee6e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveable: 0
+  moveSpeed: 5
+  attack1Damage: 0
+  attack2Damage: 0
+  maxStamina: 0
+  maxHealth: 0
+  tileCollision:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &9215333186688559208
 GameObject:
   m_ObjectHideFlags: 0

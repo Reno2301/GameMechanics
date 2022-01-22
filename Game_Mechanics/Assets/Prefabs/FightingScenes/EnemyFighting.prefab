@@ -126,9 +126,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Dylan
   unitLevel: 1
-  attack1: 5
-  attack2: 10
+  attack1Damage: 5
+  attack2Damage: 10
+  attack1Stamina: 5
+  attack2Stamina: 10
   currentStamina: 50
   maxStamina: 50
+  staminaAdd: 50
   maxHP: 70
   currentHP: 70

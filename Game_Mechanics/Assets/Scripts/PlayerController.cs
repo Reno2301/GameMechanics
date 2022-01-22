@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     //Stats
     public int attack1Damage;
     public int attack2Damage;
+    public int attack1Stamina;
+    public int attack2Stamina;
     public int maxStamina;
     public int maxHealth;
 
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
         LevelSystem levelSystem = new LevelSystem();
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         SetDefaultStats();
 
-        //Set the stats from PlayerPrefs
+        //Get the stats from PlayerPrefs
         attack1Damage = PlayerPrefs.GetInt("attack1Damage");
         attack2Damage = PlayerPrefs.GetInt("attack2Damage");
         maxStamina = PlayerPrefs.GetInt("maxStamina");
@@ -117,11 +119,6 @@ public class PlayerController : MonoBehaviour
         Moveable();
         Movement();
         Animation();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            levelSystem.AddExperience(40);
-        }
     }
 
     private void Moveable()
@@ -176,5 +173,10 @@ public class PlayerController : MonoBehaviour
             else
                 animator.Play("Main_Player_Idle");
         }
+    }
+
+    public void PlayerAddExperience(int exp)
+    {
+        levelSystem.AddExperience(exp);
     }
 }
