@@ -9,7 +9,7 @@ public class LevelSystem : MonoBehaviour
     public event EventHandler OnLevelChanged;
 
     public int level;
-    private float experience;
+    public float experience;
     public int experienceToNextLevel;
 
     public LevelSystem()

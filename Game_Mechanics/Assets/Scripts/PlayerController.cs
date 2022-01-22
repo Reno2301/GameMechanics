@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     //Leveling
-    private LevelSystem levelSystem;
+    public LevelSystem levelSystem;
     private float maxLevel = 10;
 
     //Movement

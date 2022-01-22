@@ -22,6 +22,8 @@ public class Unit : MonoBehaviour
     public int currentHP;
     public int healthAdd;
 
+    public Vector2 position;
+
     public int potion;
 
     PlayerController player;
