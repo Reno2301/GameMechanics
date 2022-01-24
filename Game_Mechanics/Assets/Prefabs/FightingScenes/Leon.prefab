@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Leon
-  unitLevel: 3
+  unitLevel: 5
   attack1Damage: 8
   attack2Damage: 16
   attack1Stamina: 8
