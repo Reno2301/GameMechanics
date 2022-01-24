@@ -28765,7 +28765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 496748332}
   movePoint: {fileID: 1276486968}
-  position: {x: 0.5, y: -2.8, z: 0}
+  position: {x: 0.5, y: 2.8, z: 0}
   previous: Fighting2
 --- !u!1 &1147966012
 GameObject:
