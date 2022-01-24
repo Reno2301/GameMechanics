@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   playerPrefab: {fileID: 9215333185848895490, guid: 5846a76b811da234a8856c634f3dcc57, type: 3}
-  enemyPrefab: {fileID: 1877526125652488524, guid: 4111c01973bfd3a47a9dcef880e5efea, type: 3}
+  enemyPrefab: {fileID: 4439206926409776060, guid: 03519db013c648b4997dda5ef01cb37f, type: 3}
   playerPosition: {fileID: 1260309897}
   enemyPosition: {fileID: 1726937926}
   dialogueText: {fileID: 770056051}

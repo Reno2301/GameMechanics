@@ -24,19 +24,12 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
-    PlayerController player;
-
     // Start is called before the first frame update
     void Awake()
     {
         state = BattleState.START;
 
         StartCoroutine(SetupBattle());
-    }
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     IEnumerator SetupBattle()
@@ -68,7 +61,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         //Enemy will run away
-        if (enemyUnit.currentStamina <= 30 && Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) <= 150)
+        if (enemyUnit.currentStamina <= 30 && Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) <= 200)
         {
             dialogueText.text = enemyUnit.unitName + " is creating distance.";
 
@@ -83,7 +76,7 @@ public class BattleSystem : MonoBehaviour
             PlayerTurn();
         } 
         //Enemy will rest
-        else if( enemyUnit.currentStamina <= 30 && Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) > 150)
+        else if( enemyUnit.currentStamina <= 30 && Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) > 200)
         {
             dialogueText.text = enemyUnit.unitName + " is resting.";
 
@@ -102,7 +95,7 @@ public class BattleSystem : MonoBehaviour
         //Enemy will hit you
         else
         {
-            if (Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) <= 150)
+            if (Vector2.Distance(enemyUnit.transform.position, playerUnit.transform.position) <= 200)
             {
                 dialogueText.text = enemyUnit.unitName + " hits you!";
                 enemyUnit.currentStamina -= enemyUnit.attack1Stamina;
@@ -143,7 +136,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack1()
     {
-        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 150)
+        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 200)
         {
             if (playerUnit.currentStamina >= playerUnit.attack1Stamina)
             {
@@ -195,7 +188,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack2()
     {
-        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 150)
+        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 200)
         {
             if (playerUnit.currentStamina >= playerUnit.attack2Stamina)
             {
@@ -316,7 +309,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator WalkRight()
     {
-        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 150)
+        if (Vector2.Distance(playerUnit.transform.position, enemyUnit.transform.position) <= 200)
         {
             dialogueText.text = "You can't get any closer.";
 
@@ -350,7 +343,7 @@ public class BattleSystem : MonoBehaviour
 
             PlayerPrefs.SetFloat("CurrentExp", 115 + PlayerPrefs.GetFloat("CurrentExp"));
 
-            if (PlayerPrefs.GetFloat("CurrentExp") >= 100)
+            while (PlayerPrefs.GetFloat("CurrentExp") >= 100)
             {
                 Debug.Log("before setting exp: " + PlayerPrefs.GetFloat("CurrentExp"));
                 PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);

@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private float maxLevel = 10;
 
     //Movement
-    public bool moveable;
     public float moveSpeed = 5f;
 
     //Stats
@@ -29,6 +28,8 @@ public class PlayerController : MonoBehaviour
     //Collision
     public LayerMask tileCollision;
 
+    public bool inFightingScene;
+    
     LevelWindow levelWindow;
     Transform movePoint;
 
@@ -123,16 +124,17 @@ public class PlayerController : MonoBehaviour
 
     private void Moveable()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting1"))
-            moveable = false;
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting1") ||
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting2"))
+            inFightingScene = true;
         else
-            moveable = true;
+            inFightingScene = false;
     }
 
     //Player movement
     public void Movement()
     {
-        if (moveable)
+        if (!inFightingScene)
         {
             //Player move towards movePoint
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
     //Player animation
     public void Animation()
     {
-        if (moveable)
+        if (!inFightingScene)
         {
             if (Input.GetKey(KeyCode.D))
                 animator.Play("Main_Player_Walk_Right");

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7127601107792896514}
   - component: {fileID: 7127601107792896515}
   - component: {fileID: 7127601107792896765}
+  - component: {fileID: 5583478640787250757}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,16 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6bef62a743bbe40bd66f2f00ee6e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  levelSystem: {fileID: 0}
   moveable: 0
-  movePoint: {fileID: 0}
+  moveSpeed: 5
+  attack1Damage: 0
+  attack2Damage: 0
+  attack1Stamina: 0
+  attack2Stamina: 0
+  maxStamina: 0
+  maxHealth: 0
   tileCollision:
     serializedVersion: 2
     m_Bits: 128
-  attack1Damage: 0
-  attack2Damage: 0
-  stamina: 0
-  health: 0
 --- !u!95 &7127601107792896765
 Animator:
   serializedVersion: 3
@@ -175,3 +178,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5583478640787250757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127601107792896513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f879e5567ddac4094a250e89546639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 0}
+  dialogueText: {fileID: 0}
