@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Islands/IslandRight.unity
     guid: 2379a9e8263458e4e873a72e30c15233
   - enabled: 1
+    path: Assets/Scenes/Fights/Fighting3.unity
+    guid: a907f6ff90cc34d4b982a1bc8b4ac2a5
+  - enabled: 1
     path: Assets/Scenes/Islands/IslandDown.unity
     guid: 081edfc14255a2840b341ea0a7167570
+  - enabled: 1
+    path: Assets/Scenes/Fights/Fighting4.unity
+    guid: ab9efbc54a95b214b91ab5f3653c860a
   m_configObjects: {}

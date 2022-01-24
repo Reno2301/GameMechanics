@@ -54,6 +54,17 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void CheckPlayerPrefs()
+    {
+        unitLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
+
+        attack1Damage = PlayerPrefs.GetInt("attack1Damage");
+        attack2Damage = PlayerPrefs.GetInt("attack2Damage");
+
+        maxStamina = PlayerPrefs.GetInt("maxStamina");
+        maxHP = PlayerPrefs.GetInt("maxHealth");
+    }
+
     public bool TakeDamage(int damage)
     {
         currentHP -= damage;

@@ -24,6 +24,8 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
+    TransitionAnimation tranAnim;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,7 +42,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGameObject = Instantiate(enemyPrefab, enemyPosition);
         enemyUnit = enemyGameObject.GetComponent<Unit>();
 
-        dialogueText.text = "Your enemy is " + enemyUnit.unitName + ".\nTake him out!";
+        dialogueText.text = "Your enemy is " + enemyUnit.unitName + ".\nGo for it!";
 
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
@@ -334,6 +336,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EndBattle()
     {
+        playerUnit.CheckPlayerPrefs();
         if (state == BattleState.WON)
         {
             dialogueText.text = "You won the battle!";
@@ -346,31 +349,30 @@ public class BattleSystem : MonoBehaviour
 
             while (PlayerPrefs.GetFloat("CurrentExp") >= 100)
             {
-                Debug.Log("before setting exp: " + PlayerPrefs.GetFloat("CurrentExp"));
                 PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
                 PlayerPrefs.SetFloat("CurrentExp", PlayerPrefs.GetFloat("CurrentExp") - 100);
-                Debug.Log("after setting exp: " + PlayerPrefs.GetFloat("CurrentExp"));
             }
-            Debug.Log("after while loop exp: " + PlayerPrefs.GetFloat("CurrentExp"));
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You lost the battle!";
-        }
 
-        yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2f);
+        }
 
         dialogueText.text = "Returning to other scene";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        tranAnim.SceneTransition();
     }
 
     void PlayerTurn()
     {
+        playerUnit.CheckPlayerPrefs();
         dialogueText.text = "Choose an action.";
     }
 

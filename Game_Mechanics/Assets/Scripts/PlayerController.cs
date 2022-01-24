@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("attack2Damage", 14);
             PlayerPrefs.SetInt("maxStamina", 100);
             PlayerPrefs.SetInt("maxHealth", 100);
-            PlayerPrefs.SetInt("EnemiesDefeated", 0);
         }
     }
 
@@ -126,7 +125,9 @@ public class PlayerController : MonoBehaviour
     private void Moveable()
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting1") ||
-            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting2"))
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting2") ||
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting3") ||
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Fighting4"))
             inFightingScene = true;
         else
             inFightingScene = false;
