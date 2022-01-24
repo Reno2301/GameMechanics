@@ -126,15 +126,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Melissa
   unitLevel: 3
-  attack1Damage: 8
-  attack2Damage: 16
-  attack1Stamina: 8
-  attack2Stamina: 16
-  currentStamina: 70
-  maxStamina: 70
-  staminaAdd: 50
-  maxHP: 90
-  currentHP: 90
+  attack1Damage: 6
+  attack2Damage: 12
+  attack1Stamina: 7
+  attack2Stamina: 14
+  currentStamina: 60
+  maxStamina: 60
+  staminaAdd: 40
+  maxHP: 60
+  currentHP: 60
   healthAdd: 0
   position: {x: 0, y: 0}
   potion: 0

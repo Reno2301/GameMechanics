@@ -130,11 +130,11 @@ MonoBehaviour:
   attack2Damage: 10
   attack1Stamina: 5
   attack2Stamina: 10
-  currentStamina: 50
-  maxStamina: 50
-  staminaAdd: 50
-  maxHP: 70
-  currentHP: 70
+  currentStamina: 40
+  maxStamina: 40
+  staminaAdd: 30
+  maxHP: 20
+  currentHP: 20
   healthAdd: 0
   position: {x: 0, y: 0}
   potion: 0

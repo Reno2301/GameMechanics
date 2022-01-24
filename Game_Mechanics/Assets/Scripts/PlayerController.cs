@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.DeleteAll();
         levelWindow = GameObject.Find("LevelWindow").GetComponent<LevelWindow>();
         movePoint = GameObject.Find("MovePoint").GetComponent<Transform>();
     }
