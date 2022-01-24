@@ -18,7 +18,7 @@ public class ChangeToFighting : MonoBehaviour
 
     private void Update()
     {
-        if (dm.dialogueOn && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
             sceneSwitch.SwitchScene(sceneName);
     }
 }
