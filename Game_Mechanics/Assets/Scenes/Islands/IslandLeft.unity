@@ -28767,7 +28767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2071880530}
   movePoint: {fileID: 1276486968}
-  position: {x: 0.5, y: 0.8, z: 0}
+  position: {x: 0.5, y: 2.8, z: 0}
   previous: Fighting1
 --- !u!1 &1732953875
 GameObject:
@@ -29001,7 +29001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - You want to get stronger? Come and fight me then.
+    - You want to get stronger? Come and fight me then. (Press 'Space')
 --- !u!1001 &2071880529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29031,7 +29031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7127601107792896760, guid: 7345c367cb46b29419fd13c27ac12fd5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7127601107792896760, guid: 7345c367cb46b29419fd13c27ac12fd5, type: 3}
       propertyPath: m_LocalPosition.z

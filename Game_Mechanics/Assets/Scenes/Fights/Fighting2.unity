@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &227997025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1277,7 +1277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 472291338}
   - component: {fileID: 472291337}
-  - component: {fileID: 472291335}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1285,22 +1284,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &472291335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472291334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f53c85c265e7f4cabb58898962cf5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  movePoint: {fileID: 0}
-  position: {x: 0, y: 0, z: 0}
-  previous: LeftIsland
 --- !u!114 &472291337
 MonoBehaviour:
   m_ObjectHideFlags: 0

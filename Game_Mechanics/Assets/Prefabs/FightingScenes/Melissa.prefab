@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Melissa
-  unitLevel: 1
+  unitLevel: 3
   attack1Damage: 8
   attack2Damage: 16
   attack1Stamina: 8

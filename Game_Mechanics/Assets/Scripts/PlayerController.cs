@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("attack2Damage", 14);
             PlayerPrefs.SetInt("maxStamina", 100);
             PlayerPrefs.SetInt("maxHealth", 100);
+            PlayerPrefs.SetInt("EnemiesDefeated", 0);
         }
     }
 

@@ -11,6 +11,7 @@ public class LevelSystem : MonoBehaviour
     public int level;
     public float experience;
     public int experienceToNextLevel;
+    public int enemiesDefeated;
 
     public LevelSystem()
     {

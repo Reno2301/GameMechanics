@@ -155,6 +155,7 @@ public class BattleSystem : MonoBehaviour
 
                 if (isDead)
                 {
+                    PlayerPrefs.SetInt("EnemiesDefeated", 1 + PlayerPrefs.GetInt("EnemiesDefeated"));
                     state = BattleState.WON;
                     StartCoroutine(EndBattle());
                 }

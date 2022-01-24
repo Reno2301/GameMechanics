@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7127601107792896760, guid: 7345c367cb46b29419fd13c27ac12fd5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7127601107792896760, guid: 7345c367cb46b29419fd13c27ac12fd5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28701,6 +28701,7 @@ GameObject:
   - component: {fileID: 1103130063}
   - component: {fileID: 1103130062}
   - component: {fileID: 1103130061}
+  - component: {fileID: 1103130064}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -28750,6 +28751,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103130064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103130060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f53c85c265e7f4cabb58898962cf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 496748332}
+  movePoint: {fileID: 1276486968}
+  position: {x: 0.5, y: -2.8, z: 0}
+  previous: Fighting2
 --- !u!1 &1147966012
 GameObject:
   m_ObjectHideFlags: 0
