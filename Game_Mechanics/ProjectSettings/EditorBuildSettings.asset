@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 3b94a57719afee74886143ca514c605f
+  - enabled: 1
     path: Assets/Scenes/Islands/MiddleIsland.unity
     guid: 30cb9a0447c615c4199a236ef9ca33d8
   - enabled: 1
